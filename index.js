@@ -7,10 +7,9 @@ console.log(`WebSocket server listening on ws://localhost:${PORT}`);
 
 wss.on("connection", (ws, req) => {
     // Extract client IP (handling forwarded headers if behind a proxy)
-    const clientIp = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
+    const clientIp = req.headers["x-forwarded-for"];
 
     console.log("\n========================================");
-    console.log(`[${new Date().toISOString()}] New Connection Established`);
     console.log(`Client IP: ${clientIp}`);
     console.log("Received Headers:");
     console.dir(req.headers, { depth: null });
